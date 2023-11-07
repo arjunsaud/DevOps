@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+  #this build takes Searches Dockerfile in given dir
+    build: ./project
+    ports:
+      -"5000:5000"
+    
+    #this below command make image name with below name 
+    image: 'dockerhub_username/any_image_name'
+  
+  redis:
+    image: "redis:apline"
+  
