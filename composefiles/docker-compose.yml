@@ -1,0 +1,11 @@
+version: '3'
+services:
+  frontend:
+    image: 'httpd:alpine'
+    # First one port is Host Machine Port and Second part after colun sing is container port
+    ports:
+      -"8000:80"
+
+#In volume first part of file is build or project path and second part is path of container, and first part will get mounted to path of second part
+    volumes:
+      -./:/usr/local/apache2/htdocs
