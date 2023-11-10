@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-  #this build takes Searches Dockerfile in given dir
+  #this build tells where the  Dockerfile is present
     build: ./project
     ports:
       -"5000:5000"
