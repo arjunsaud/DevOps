@@ -1,0 +1,46 @@
+version: '3'
+services:
+  web:
+    build:
+    # This context makes our compose file more generic so that we don't have to change the Dockerfile
+      context: ./project
+      # this context tells where the Dockerfile is present
+      dockerfile: Dockerfile
+      # We specify the name of Dockerfile eg: In Our Case name is 'Dockerfile'
+      args:
+        - PYTHON_VERSION=3.4
+      # This args is used to declare argument, it like creating variable and its value get read from the Dockerfile
+
+    image: python-redis-2
+    ports:
+      - "5000:5000"
+    
+
+    networks:
+      - network1  #network name can be any
+    
+    # This below command make image name with below name 
+  
+  redis:
+    image: "redis:apline"
+    volumes:
+      - myredisdata:/data
+    networks:
+      - network1
+  
+  redis2:
+    image: "redis:alpine"
+    volumes:
+      - myredisdata2:/data
+    networks:
+      - network2
+
+#To create networks
+networks:
+  network1:
+  network2:
+
+#To create volumes
+volumes:
+  myredisdata:
+  myredisdata2:
