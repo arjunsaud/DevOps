@@ -1,0 +1,37 @@
+version: '3'
+services:
+  web:
+    build:
+# This context makes our compose file more generic so that we don't have to change the Dockerfile
+      context: ./project
+# This context tells where the Dockerfile is present
+      dockerfile: Dockerfile
+# We specify the name of Dockerfile eg: In Our Case name is 'Dockerfile'
+      args:
+        - PYTHON_VERSION=${PYTHON_VERSION}
+# This args is used to declare argument, it like creating variable and its value get read from the Dockerfile
+
+    image: python-redis-2
+    ports:
+      - "5000:5000"
+
+# To give env 
+    environment:
+      - name=arjun
+
+# To give env from file
+    env_file:
+      - .env.txt,env.1.txt
+# We can give n number of text file because it take array of file
+
+# To see this env file after compose up type "docker-compose service_name(web) env"
+    networks:
+      - network1  #network name can be any
+    
+# This below command make image name with below name 
+  
+  redis:
+    image: ${REDIS_IMAGE}
+# Docker Compose search for .env by default and it takes the value of REDIS_IMAGE and PYTHON_IMAGE from .env
+# This type of practise makes compose file more generic
+
