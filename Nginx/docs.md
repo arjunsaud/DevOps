@@ -1,5 +1,9 @@
 # NGINX
 
+Keyword in nginx are called directives
+
+Docs : https://nginx.org/en/docs/
+
 - It is web server
 
 ![Alt text](images/image.png)
@@ -16,12 +20,13 @@ There are lot of blocks and the first block is main block
 
 (first block or called context)
 
+These below are the configuration of nginx.conf file
+
 ## main:
 
 - number of worker process
 - username
 - PID
-- log locations
   We can configure these in main block
 
 ## main-->events:
@@ -33,6 +38,8 @@ There are lot of blocks and the first block is main block
 - TCP / UDP setting
 
 ## main--> HTTP:
+
+- log locations for (log purpose)
 
 It contains two blocks.
 HTTP block can have multiple server blocks
@@ -55,3 +62,9 @@ one server block can have multiple locations block
   It can be used to request to backend server and used as for load balancing
 
 ![Alt text](<images/Screenshot from 2023-11-15 12-32-08.png>)
+
+# Commands
+
+validate nginx configuration: `sudo nginx -t`
+
+reload nginx : `sudo systemctl reload nginx`
