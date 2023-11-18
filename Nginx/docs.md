@@ -114,7 +114,11 @@ server {
 
         root /var/www/blog;
 
+
+        # url of the website
+        # eg arjunsaud.com.np or www.arjunsaud.com.np or blog.arjunsaud.com.np
         server_name _;
+
 
         # This is build in for most of browser
         auth_basic "Any Message";
@@ -127,7 +131,16 @@ server {
         index index.html index.htm;
 
         location / {
+                # this turn off the auth at this route ("/")
+                # This override the above auth
+                auth_basic off;
                 try_files $uri $uri/ = 404;
+        }
+
+        location /admin {
+                try_files $uri $uri/=404;
         }
 }
 ```
+
+# Reverse Proxy
