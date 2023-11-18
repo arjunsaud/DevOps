@@ -68,3 +68,32 @@ one server block can have multiple locations block
 validate nginx configuration: `sudo nginx -t`
 
 reload nginx : `sudo systemctl reload nginx`
+
+## For site host nginx on conf.d folder
+
+```
+#this is called virtual server and in apache it is called virtual host
+#this keyword are called directives
+#we can create multiple server blocks
+
+server {
+        listen 80 default_server;
+
+        # this root directive contains the path of the project
+        root /var/www/blog;
+
+        # this server name contain the name of server
+        server_name _;
+
+        # here it contains the entry file with some combinations like .html or .htm or index
+        index index.html index.htm;
+
+        # this / is path it can be any route list /api or /login we can use regex by ~ or use = to exact match, and go to docs for this
+        location / {
+                #uri is the route after added to route directive
+                # if uri not present return 404
+                try_files $uri $uri/ = 404;
+
+        }
+}
+```
