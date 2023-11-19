@@ -163,3 +163,32 @@ server {
 }
 
 ```
+
+# load balancing: nginx use round robin algorithm for load balancing
+
+```
+
+upstream backend{
+        # This weight is used how many number of request it have to handle and after 100 of request it request to next instance of the server
+
+        server localhost:3000 weight=100;
+
+        # this 8001 server handle one request and pass next request to port 3000 server
+        server localhost:3001;
+        # for this you should run project on both port
+}
+
+server {
+        listen 80;
+
+        # use domain instead of localhost
+        server_name localhost;
+
+        location / {
+                #this is for not caching
+                #add_header Cache-Control no-store;
+                proxy_pass http://backend
+        }
+}
+
+```
