@@ -144,3 +144,22 @@ server {
 ```
 
 # Reverse Proxy
+
+```
+
+upstream backend{
+        server localhost:3000;
+}
+
+server {
+        listen 80;
+
+        # use domain instead of localhost
+        server_name localhost;
+
+        location / {
+                proxy_pass http://backend
+        }
+}
+
+```
