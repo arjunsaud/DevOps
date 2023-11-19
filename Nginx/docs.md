@@ -192,3 +192,57 @@ server {
 }
 
 ```
+
+# To make backup server
+
+```
+upstream backend{
+
+        server localhost:3000;
+
+        # this backup is used as backup server, it gets triggered when main server goes down
+        server localhost:3001 backup;
+
+        # this makes server down although it is running in background
+        server localhost:3002 down;
+
+}
+
+server {
+        listen 80;
+        # use domain instead of localhost
+        server_name localhost;
+
+        location / {
+                #this is for not caching
+                #add_header Cache-Control no-store;
+                proxy_pass http://backend
+        }
+}
+
+```
+
+## For Host React app
+
+```
+# build react app and copy react build to react_app folder
+
+server {
+        listen 80;
+
+        root /var/www/react_app;
+
+
+
+        server_name _;
+
+        index index.html index.htm;
+
+        location / {
+                try_files $uri $uri/ /index.html;
+
+                # here /index.html is added so that when refreshing it doesn't throw error
+                # if it is not given client side navigation works but when we refresh it does't work
+        }
+}
+```
