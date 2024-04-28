@@ -1,18 +1,10 @@
-=== "Tab 1"
-    Markdown **content**.
+<hr />
+=== "tab_1"
 
-    Multiple paragraphs.
+    Content of tab_1  
+    ![](../../images/home/relux_deer.gif)
 
-=== "Tab 2"
-    More Markdown **content**.
+=== "tab_2"
 
-    - list item a
-    - list item b
-
-===! "Tab A"
-    Different tab set.
-
-=== "Tab B"
-    ```
-    More content.
-    ```
+    Content of tab_2  
+    ![](../../images/home/tear_deer.gif)
