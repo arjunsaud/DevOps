@@ -1,10 +1,7 @@
-<hr />
-=== "tab_1"
+# Docker
 
-    Content of tab_1  
-    ![](../../images/home/relux_deer.gif)
+# Nginx
 
-=== "tab_2"
+# Kubernets
 
-    Content of tab_2  
-    ![](../../images/home/tear_deer.gif)
+# Podman
